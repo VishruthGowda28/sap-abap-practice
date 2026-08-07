@@ -42,11 +42,8 @@ CLASS zcl_02_comparison IMPLEMENTATION.
     ELSE.
       eligible_status = 'No'.
     ENDIF.
-    out->write( 'Student Details' ).
-    out->write( repeat( val = '-' occ = 20 ) ).
-    out->write( |Name       : { name }| ).
-    out->write( |Age        : { age } | ).
-    out->write( |CGPA       : { cgpa }| ).
+    out->write( '***Student Details***' ).
+    out->write( |Name       : { name } | ).
     out->write( |Adult      : { adult_status }| ).
     out->write( |Topper     : { topper_status }| ).
     out->write( |Eligible   : { eligible_status }| ).
