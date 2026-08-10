@@ -54,5 +54,29 @@ CLASS zcl_09_structures_practice IMPLEMENTATION.
     out->write( |Course   : { student_data-course }| ).
     out->write( |Semester : { student_data-semester }| ).
     out->write( |CGPA     : { student_data-cgpa }| ).
+    out->write( | | ).
+    out->write( 'Example for Internal Table Structures' ).
+    out->write( repeat(  val = '-' occ = 35 ) ).
+    TYPES:
+      BEGIN OF ty_employee,
+        id     TYPE i,
+        name   TYPE string,
+        salary TYPE p LENGTH 8 DECIMALS 2,
+      END OF ty_employee.
+
+    DATA employees TYPE TABLE OF ty_employee.
+    DATA employee TYPE ty_employee.
+    employee-id = 101.
+    employee-name = 'Vishruth'.
+    employee-salary = '45000.50'.
+    APPEND employee TO employees.
+    employee-id = 18.
+    employee-name = 'Virat'.
+    employee-salary = '18000.60'.
+    APPEND employee TO employees.
+
+    LOOP AT employees INTO DATA(current_employee).
+      out->write( |ID: { current_employee-id }, Name: { current_employee-name }, Salary: { current_employee-salary }| ).
+    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.
